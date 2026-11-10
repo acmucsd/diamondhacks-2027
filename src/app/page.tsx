@@ -4,6 +4,7 @@ import Room1 from '@/sections/Room1';
 import Chatbot from '@/sections/Chatbot';
 import Room3 from '@/sections/Room3';
 import styles from './page.module.scss';
+import MeetTeam from '@/sections/MeetTeam';
 import Sponsors from '@/sections/Sponsors';
 
 export default function Home() {
@@ -15,6 +16,7 @@ export default function Home() {
         <Room2 />
         <Chatbot />
         <Room3 />
+        <MeetTeam />
         <Sponsors />
       </main>
     </div>

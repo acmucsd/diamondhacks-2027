@@ -2,17 +2,30 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import '@/styles/globals.scss';
 import type { Metadata } from 'next';
-import { DM_Sans } from 'next/font/google';
-import localFont from 'next/font/local';
+import { Londrina_Solid, Akshar, Inter } from 'next/font/google';
+//import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 
-const dmSans = DM_Sans({ subsets: ['latin'] });
-
-const jainiPurva = localFont({
-  src: '../../public/fonts/JainiPurva-Regular.ttf',
-  variable: '--font-jaini-purva',
-  display: 'swap',
+const londrinaSolid = Londrina_Solid({
+  subsets: ['latin'],
+  weight: ["100", "300", "400", "900"],
 });
+
+const akshar = Akshar({
+  subsets: ['latin'],
+  variable: '--font-akshar',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
+// const jainiPurva = localFont({
+//   src: '../../public/fonts/JainiPurva-Regular.ttf',
+//   variable: '--font-jaini-purva',
+//   display: 'swap',
+// });
 
 export const metadata: Metadata = {
   title: 'DiamondHacks 2026',
@@ -25,7 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="theme-color" content="#151625" />
       </head>
-      <body className={`${dmSans.className} ${jainiPurva.variable}`}>
+      <body className={`${londrinaSolid.className} ${akshar.variable} ${inter.variable}`}>
         <Navbar />
         {children}
         <Footer />
