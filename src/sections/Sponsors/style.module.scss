@@ -10,7 +10,6 @@
   z-index: 4;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  clip-path: inset(-100vw -100vw 0 -100vw);
 
   @media screen and (max-width: vars.$breakpoint-md) {
     padding-bottom: 5rem;
@@ -116,18 +115,57 @@ a:has(.ucsdcse) {
   }
 }
 
-.graphPaper {
+$paper-width: 127vw;
+$paper-height: 70.44vw;
+$paper-top: 24vw;
+$paper-overhang: calc(21.4vw - 2.5rem);
+
+.paper,
+.paperMiddle {
   position: absolute;
-  top: -24vw;
   left: calc(-1 * vars.$side-padding - 10vw);
-  width: 127vw;
-  height: auto;
-  transform: scaleY(-1);
+  width: $paper-width;
   z-index: 2;
   pointer-events: none;
 
   @media screen and (max-width: vars.$breakpoint-md) {
     left: calc(-1 * vars.$side-padding-mobile - 10vw);
+  }
+}
+
+.paper {
+  height: calc(min($paper-height, 50% + ($paper-top + $paper-overhang) / 2) + 1px);
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.paperTop {
+  top: -$paper-top;
+  transform: scaleY(-1);
+}
+
+.paperBottom {
+  bottom: calc(-1 * $paper-overhang);
+}
+
+.paperMiddle {
+  top: $paper-height - $paper-top;
+  bottom: calc($paper-height - $paper-overhang);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.paperBand {
+  flex: 1 1 0;
+  min-height: 0;
+  margin-bottom: -1px;
+  width: 100%;
+  object-fit: cover;
+  object-position: 50% -1vw;
+
+  &:nth-child(even) {
+    transform: scaleY(-1);
   }
 }
 

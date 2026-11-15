@@ -4,10 +4,18 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { BRONZE_SPONSORS, GOLD_SPONSORS, NORMAL_SPONSORS } from './sponsors';
 
+const PAPER = '/assets/graph-paper.svg';
+
 const Sponsors: React.FC = () => {
   return (
     <section className={styles.container} id="sponsors">
-      <img src="/assets/graph-paper.svg" alt="" className={styles.graphPaper} />
+      <img src={PAPER} alt="" className={`${styles.paper} ${styles.paperTop}`} />
+      <div className={styles.paperMiddle}>
+        {Array.from({ length: 6 }, (_, i) => (
+          <img key={i} src={PAPER} alt="" className={styles.paperBand} />
+        ))}
+      </div>
+      <img src={PAPER} alt="" className={`${styles.paper} ${styles.paperBottom}`} />
       <img src="/assets/winner-guy.svg" alt="" className={styles.winnerGuy} />
       <img src="/assets/redbull-guy.svg" alt="" className={styles.redbullGuy} />
       <div className={styles.content}>
