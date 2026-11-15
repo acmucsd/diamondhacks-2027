@@ -11,6 +11,60 @@ export const GOLD_SPONSORS: Sponsor[] = [
     link: 'https://cse.ucsd.edu/',
   },
   {
+    name: 'Top Left',
+    logo: 'browser-use.svg',
+    link: 'https://browser-use.com/?utm_source=diamondhacks',
+  },
+  {
+    name: 'Top Right',
+    logo: 'fetchai.svg',
+    link: 'https://fetch.ai/?utm_source=diamondhacks2026&utm_medium=direct&utm_campaign=hackathon',
+  },
+];
+
+export const BRONZE_SPONSORS: Sponsor[] = [
+  {
+    name: 'Middle Left',
+    logo: 'qualcomm.svg',
+    link: 'https://www.qualcomm.com/',
+  },
+  {
+    name: 'Middle Right',
+    logo: 'twelvelabs.svg',
+    link: 'https://www.twelvelabs.io/',
+  },
+];
+
+export const NORMAL_SPONSORS: Sponsor[] = [
+  {
+    name: 'Bottom 1',
+    logo: 'perplexity.svg',
+    link: 'https://www.perplexity.ai/',
+  },
+  {
+    name: 'Bottom 2',
+    logo: 'lovable.png',
+    link: 'https://www.lovable.dev/',
+  },
+  {
+    name: 'Bottom 3',
+    logo: 'mlh.svg',
+    link: 'https://mlh.io/',
+  },
+  {
+    name: 'Bottom 4',
+    logo: 'purebuttons.png',
+    link: 'https://www.purebuttons.com/',
+  },
+  {
+    name: 'Bottom 5',
+    logo: 'jellyjelly.svg',
+    link: 'https://www.jellyjelly.com/',
+  },
+];
+
+export const PAST_SPONSORS_2026: Sponsor[] = [
+  {
     name: 'Browser Use',
     logo: 'browser-use.svg',
     link: 'https://browser-use.com/?utm_source=diamondhacks',
@@ -20,9 +74,6 @@ export const GOLD_SPONSORS: Sponsor[] = [
     logo: 'fetchai.svg',
     link: 'https://fetch.ai/?utm_source=diamondhacks2026&utm_medium=direct&utm_campaign=hackathon',
   },
-];
-
-export const BRONZE_SPONSORS: Sponsor[] = [
   {
     name: 'Qualcomm',
     logo: 'qualcomm.svg',
@@ -33,11 +84,8 @@ export const BRONZE_SPONSORS: Sponsor[] = [
     logo: 'twelvelabs.svg',
     link: 'https://www.twelvelabs.io/',
   },
-];
-
-export const NORMAL_SPONSORS: Sponsor[] = [
   {
-    name: 'Perplexity',
+    name: 'Perplexity AI',
     logo: 'perplexity.svg',
     link: 'https://www.perplexity.ai/',
   },
