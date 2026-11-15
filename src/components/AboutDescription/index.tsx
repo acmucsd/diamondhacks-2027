@@ -15,7 +15,7 @@ const AboutDescription: React.FC = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <span className={styles.title}>
-          What is <span className={styles.diamond}>DiamondHacks</span>?
+          What is DiamondHacks?
         </span>
       </div>
       <div className={styles.carouselContainer}>
