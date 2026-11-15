@@ -26,7 +26,7 @@ const Sponsors: React.FC = () => {
           {GOLD_SPONSORS.map(sponsor => (
             <Link href={sponsor.link} key={sponsor.name} target="_blank" rel="noopener noreferrer">
               <Image
-                src={`/sponsors/new/${sponsor.logo}`}
+                src={`/sponsors/old2/${sponsor.logo}`}
                 alt={sponsor.name}
                 className={`${styles.sponsorLogo} ${styles.goldSponsorLogo} ${
                   styles[sponsor.name.toLowerCase().replace(/\s/g, '')]
@@ -41,7 +41,7 @@ const Sponsors: React.FC = () => {
           {BRONZE_SPONSORS.map(sponsor => (
             <Link href={sponsor.link} key={sponsor.name} target="_blank" rel="noopener noreferrer">
               <Image
-                src={`/sponsors/new/${sponsor.logo}`}
+                src={`/sponsors/old2/${sponsor.logo}`}
                 alt={sponsor.name}
                 className={`${styles.sponsorLogo} ${styles.bronzeSponsorLogo} ${
                   styles[sponsor.name.toLowerCase().replace(/\s/g, '')]
@@ -56,7 +56,7 @@ const Sponsors: React.FC = () => {
           {NORMAL_SPONSORS.map(sponsor => (
             <Link href={sponsor.link} key={sponsor.name} target="_blank" rel="noopener noreferrer">
               <Image
-                src={`/sponsors/new/${sponsor.logo}`}
+                src={`/sponsors/old2/${sponsor.logo}`}
                 alt={sponsor.name}
                 className={`${styles.sponsorLogo} ${
                   styles[sponsor.name.toLowerCase().replace(/\s/g, '')]
