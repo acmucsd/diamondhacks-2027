@@ -1,44 +1,7 @@
 @use '../../styles/vars.scss' as vars;
 
 .container {
-  width: 80%;
-  height: 100%;
-  max-width: 1200px;
-  flex-shrink: 0;
-  background-color: #22272d;
-  display: flex;
-  margin: auto;
-  flex-direction: column;
-  padding-bottom: 1.4rem;
-
-  @media screen and (max-width: vars.$breakpoint-md) {
-    width: 100%;
-  }
-}
-
-.greyBackground {
-  height: calc(100% - 1.74rem);
-  margin: 0 1.4rem 0 1.4rem;
-  position: relative;
-  flex-shrink: 0;
-  background: radial-gradient(33.86% 33.86% at 26.75% 67.13%, #ffaf8a 0%, #696f78 100%);
-  padding-bottom: 25rem;
-  overflow: hidden;
-
-  @media screen and (max-width: vars.$breakpoint-md) {
-    padding-bottom: 55vw;
-  }
-}
-
-.tritonCarpet {
-  z-index: 10;
-  position: absolute;
-  left: 0;
-  pointer-events: none;
-  bottom: -2px;
-  width: calc(100% + 2px);
-
-  @media screen and (max-width: vars.$breakpoint-md) {
-    width: 120%;
-  }
+  width: 100%;
+  max-width: 1295px;
+  margin: 0 auto;
 }

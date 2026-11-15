@@ -4,6 +4,7 @@
   display: grid;
   grid-template-columns: 1fr;
   padding: 3rem;
+  padding-top: 0;
   padding-bottom: 6rem;
   margin-bottom: 4.5rem;
   gap: 2.375rem;
@@ -16,11 +17,13 @@
   }
 
   .title {
-    font-family: var(--font-jaini-purva);
-    font-weight: 400;
-    font-size: 3.4375rem;
-    line-height: 3rem;
-    letter-spacing: -0.01563rem;
+    font-family: var(--font-londrina-solid);
+    font-weight: 900;
+    font-size: clamp(2.5rem, 6.66vw, 6.29rem);
+    line-height: 1;
+    letter-spacing: 0;
+    color: #fff;
+    text-transform: uppercase;
 
     @media screen and (max-width: vars.$breakpoint-md) {
       font-size: 2rem !important;
@@ -28,11 +31,8 @@
     }
   }
 
-  .diamond {
-    background: linear-gradient(90deg, #ffd13b 0%, #ca8300 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    word-break: break-word;
+  .header {
+    text-align: center;
   }
 
   .hacks {
@@ -73,7 +73,7 @@
   .description {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 2rem;
 
     @media screen and (max-width: vars.$breakpoint-md) {
       flex-direction: column;
