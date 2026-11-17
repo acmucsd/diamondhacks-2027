@@ -2,7 +2,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import '@/styles/globals.scss';
 import type { Metadata } from 'next';
-import { Londrina_Solid, Akshar, Inter } from 'next/font/google';
+import { Londrina_Solid, Akshar, Inter, Loved_by_the_King } from 'next/font/google';
 //import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 
@@ -19,6 +19,12 @@ const akshar = Akshar({
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+});
+
+const lovedByTheKing = Loved_by_the_King({
+  subsets: ['latin'],
+  variable: '--font-loved-by-the-king',
+  weight: ["400"],
 });
 
 // const jainiPurva = localFont({
@@ -38,7 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="theme-color" content="#151625" />
       </head>
-      <body className={`${londrinaSolid.className} ${akshar.variable} ${inter.variable}`}>
+      <body className={`${londrinaSolid.className} ${akshar.variable} ${inter.variable} ${lovedByTheKing.variable}`}>
         <Navbar />
         {children}
         <Footer />

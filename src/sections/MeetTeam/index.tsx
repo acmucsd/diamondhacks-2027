@@ -2,8 +2,11 @@
 
 import { useState, useEffect, useMemo, useRef, useLayoutEffect } from 'react';
 import { createPortal } from 'react-dom';
+import Image from 'next/image';
 import styles from './style.module.scss';
+import HeartArrow from '/public/assets/heart-arrow.svg';
 import ACMLogo from '/public/assets/acm-logo.png';
+import TitleTag from '@/components/TitleTag';
 
 interface BoardMember {
   name: string;
@@ -15,6 +18,14 @@ interface BoardMember {
 const filterOptions = ['view all', 'hackathon', 'development'] as const;
 
 type FilterOption = (typeof filterOptions)[number];
+
+const titleTagFills: Record<string, string> = {
+  'Frontend Developer': '#925CC5',
+  'Backened Developer': '#F51C90',
+  'Backend Developer': '#F51C90',
+  'UI/UX Designer': '#F5CA1C',
+  'Hackathon Team Member': '#0C78C2',
+};
 
 const getMemberKey = (member: BoardMember) =>
   `${member.subteam}-${member.name}-${member.profile_image ?? ''}`;
@@ -38,7 +49,7 @@ const MeetTeam = () => {
     async function fetchBoard() {
       try {
         const response = await fetch(
-          'https://acmucsd.com/api/board?team=hackathon&team=development',
+          'http://localhost:5000/api/board?team=hackathon&team=development',
           { next: { revalidate: 3600 } }
         );
 
@@ -258,90 +269,112 @@ const MeetTeam = () => {
         ))}
       </div>
 
-      <div className={styles.carousel}>
-        <button
-          type="button"
-          className={styles.navButton}
-          onClick={handlePrev}
-          aria-label="Previous team member"
-        >
-          ‹
-        </button>
-
-        <div className={styles.cards}>
-          {exitingCard &&
-            createPortal(
-              <div
-                className={styles.memberCard}
-                style={{
-                  position: 'absolute',
-                  left: exitingCard.bounds.left,
-                  top: exitingCard.bounds.top,
-                  width: exitingCard.bounds.width,
-                  zIndex: 0,
-                  pointerEvents: 'none',
-                }}
-                aria-hidden="true"
-              >
-                <div className={styles.titleTag}>{exitingCard.member.title}</div>
-                <div className={styles.imageFrame}>
-                  <img
-                    src={exitingCard.member.profile_image || ACMLogo.src}
-                    alt=""
-                    className={`${styles.image} ${
-                      exitingCard.member.profile_image ? '' : styles.defaultImage
-                    }`}
-                  />
-                  <div className={styles.imageOverlay} />
-                </div>
-                <span className={`${styles.name} ${styles.nameExiting}`}>
-                  {exitingCard.member.name}
-                </span>
-              </div>,
-              document.body
-            )}
-          {visibleBoard.map((member, index) => {
-            const isActive = index === activeCardIndex;
-
-            return (
-              <div
-                key={getMemberKey(member)}
-                ref={node => {
-                  if (node) {
-                    cardRefs.current.set(getMemberKey(member), node);
-                  } else {
-                    cardRefs.current.delete(getMemberKey(member));
-                  }
-                }}
-                className={`${styles.memberCard} ${isActive ? styles.memberCardActive : ''}`}
-              >
-                <div className={styles.titleTag} aria-hidden={!isActive}>
-                  {member.title}
-                </div>
-
-                <div className={styles.imageFrame}>
-                  <img
-                    src={member.profile_image || ACMLogo.src}
-                    alt={member.name}
-                    className={`${styles.image} ${member.profile_image ? '' : styles.defaultImage}`}
-                  />
-                  <div className={styles.imageOverlay} />
-                </div>
-
-                <span className={styles.name}>{member.name}</span>
-              </div>
-            );
-          })}
+      <div className={styles.carouselContainer}>
+        <div className={styles.sideNote}>
+          <span className={styles.note}>come meet our friends!</span>
+          <HeartArrow />
         </div>
 
-        <button
-          type="button"
-          className={styles.navButton}
-          onClick={handleNext}
-          aria-label="Next team member"
-        >
-          ›
-        </button>
+        <div className={styles.carousel}>
+          <button
+            type="button"
+            className={styles.navButton}
+            onClick={handlePrev}
+            aria-label="Previous team member"
+          >
+            ‹
+          </button>
+
+          <div className={styles.cards}>
+            {exitingCard &&
+              createPortal(
+                <div
+                  className={styles.memberCard}
+                  style={{
+                    position: 'absolute',
+                    left: exitingCard.bounds.left,
+                    top: exitingCard.bounds.top,
+                    width: exitingCard.bounds.width,
+                    zIndex: 0,
+                    pointerEvents: 'none',
+                  }}
+                  aria-hidden="true"
+                >
+                  <div className={styles.titleTag}>
+                    <span>{exitingCard.member.title}</span>
+                    <TitleTag
+                      fill={titleTagFills[exitingCard.member.title]}
+                      className={styles.tag}
+                    />
+                  </div>
+                  <div className={styles.imageFrame}>
+                    <Image
+                      src={exitingCard.member.profile_image || ACMLogo.src}
+                      alt=""
+                      className={`${styles.image} ${
+                        exitingCard.member.profile_image ? '' : styles.defaultImage
+                      }`}
+                      fill
+                      sizes="(max-width: 640px) 180px, (max-width: 900px) 230px, 306px"
+                      unoptimized
+                    />
+                    <div className={styles.imageOverlay} />
+                  </div>
+                  <span className={`${styles.name} ${styles.nameExiting}`}>
+                    {exitingCard.member.name}
+                  </span>
+                </div>,
+                document.body
+              )}
+            {visibleBoard.map((member, index) => {
+              const isActive = index === activeCardIndex;
+
+              return (
+                <div
+                  key={getMemberKey(member)}
+                  ref={node => {
+                    if (node) {
+                      cardRefs.current.set(getMemberKey(member), node);
+                    } else {
+                      cardRefs.current.delete(getMemberKey(member));
+                    }
+                  }}
+                  className={`${styles.memberCard} ${isActive ? styles.memberCardActive : ''}`}
+                >
+                  <div className={styles.titleTag} aria-hidden={!isActive}>
+                    <span className={styles.title}>{member.title}</span>
+                    <TitleTag fill={titleTagFills[member.title]} className={styles.tag} />
+                  </div>
+
+                  <div className={styles.imageFrame}>
+                    <Image
+                      src={member.profile_image || ACMLogo.src}
+                      alt={member.name}
+                      className={`${styles.image} ${
+                        member.profile_image ? '' : styles.defaultImage
+                      }`}
+                      fill
+                      sizes="(max-width: 640px) 180px, (max-width: 900px) 230px, 306px"
+                      unoptimized
+                    />
+                    <div className={styles.imageOverlay} />
+                  </div>
+
+                  <span className={styles.name}>{member.name}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          <button
+            type="button"
+            className={styles.navButton}
+            onClick={handleNext}
+            aria-label="Next team member"
+          >
+            ›
+          </button>
+        </div>
       </div>
     </section>
   );

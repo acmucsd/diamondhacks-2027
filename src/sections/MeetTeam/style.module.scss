@@ -70,6 +70,34 @@
   background-image: url('/assets/active-filter-bg.png');
 }
 
+.carouselContainer {
+  position: relative;
+}
+
+.sideNote {
+  position: absolute;
+  top: -3rem;
+  left: 3rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-loved-by-the-king);
+  font-size: 2.5rem;
+
+  .note {
+    width: 12rem;
+    text-align: center;
+    line-height: 3rem;
+    transform: rotate(-11.256deg);
+  }
+
+  svg {
+    position: absolute;
+    bottom: -0.1rem;
+    right: -4.2rem;
+  }
+}
+
 .carousel {
   display: flex;
   justify-content: center;
@@ -130,8 +158,8 @@
   transition: filter 450ms ease;
 
   &.defaultImage {
-    width: 90%;
-    height: auto;
+    object-fit: contain;
+    transform: scale(0.9);
   }
 }
 
@@ -180,27 +208,52 @@
 
 .titleTag {
   position: absolute;
-  top: 1.1rem;
-  right: -0.7rem;
+  top: 2%;
+  right: -23%;
   z-index: 10;
-  transform: rotate(10deg);
-  background: #9ce97c;
-  color: vars.$black;
-  box-shadow: 0 0.4rem 0 rgba(17, 24, 39, 0.3);
-  border-radius: 0.35rem;
-  padding: 0.65rem 0.9rem;
-  min-width: 11rem;
-  text-align: center;
-  font-size: 1.15rem;
-  line-height: 1.15;
-  font-weight: 400;
-  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(0deg);
+  transform-origin: -7.5rem 0;
   opacity: 0;
   transition: opacity 450ms ease;
+
+  .title {
+    position: absolute;
+    z-index: 20;
+    width: 9rem;
+    color: vars.$black;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.15;
+    text-align: center;
+    text-transform: uppercase;
+    transform: rotate(-8.792deg);
+  }
+
+  .tag {
+    position: absolute;
+    left: -7.5rem;
+    width: 14rem;
+  }
 }
 
 .memberCardActive .titleTag {
   opacity: 1;
+  animation: titleTagRotateIn 450ms ease both;
+}
+
+@keyframes titleTagRotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-45deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
 }
 
 .navButton {
@@ -233,6 +286,10 @@
   }
 
   .nameExiting {
+    animation-duration: 0.01ms;
+  }
+
+  .memberCardActive .titleTag {
     animation-duration: 0.01ms;
   }
 }
