@@ -1,12 +1,13 @@
 @use '../styles/vars.scss' as vars;
 
 .body {
-  background-color: #1F2129;
+  background-color: #1f2129;
   background-image: url('/assets/background-pattern.png');
   background-repeat: repeat;
   background-size: auto;
   opacity: 1;
   padding: 0 vars.$side-padding;
+  overflow-x: clip;
 
   @media screen and (max-width: vars.$breakpoint-md) {
     padding: 0 vars.$side-padding-mobile;

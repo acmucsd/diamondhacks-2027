@@ -4,18 +4,31 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { BRONZE_SPONSORS, GOLD_SPONSORS, NORMAL_SPONSORS } from './sponsors';
 
+const PAPER = '/assets/graph-paper.svg';
+const PAPER_DOUBLE_TEAR = '/assets/graph-paper-double-tear.svg';
+
 const Sponsors: React.FC = () => {
   return (
     <section className={styles.container} id="sponsors">
+      <img src={PAPER} alt="" className={`${styles.paper} ${styles.paperTop}`} />
+      <div className={styles.paperMiddle}>
+        {Array.from({ length: 6 }, (_, i) => (
+          <img key={i} src={PAPER} alt="" className={styles.paperBand} />
+        ))}
+      </div>
+      <img src={PAPER} alt="" className={`${styles.paper} ${styles.paperBottom}`} />
+      <img src={PAPER_DOUBLE_TEAR} alt="" className={styles.paperDoubleTear} />
+      <img src="/assets/winner-guy.svg" alt="" className={styles.winnerGuy} />
+      <img src="/assets/redbull-guy.svg" alt="" className={styles.redbullGuy} />
       <div className={styles.content}>
         <Typography variant="display/heavy/small" className={styles.title}>
-          Thank you to our sponsors!
+          Thank you to our sponsors
         </Typography>
         <div className={styles.sponsorLogos}>
           {GOLD_SPONSORS.map(sponsor => (
             <Link href={sponsor.link} key={sponsor.name} target="_blank" rel="noopener noreferrer">
               <Image
-                src={`/sponsors/new/${sponsor.logo}`}
+                src={`/sponsors/old2/${sponsor.logo}`}
                 alt={sponsor.name}
                 className={`${styles.sponsorLogo} ${styles.goldSponsorLogo} ${
                   styles[sponsor.name.toLowerCase().replace(/\s/g, '')]
@@ -30,7 +43,7 @@ const Sponsors: React.FC = () => {
           {BRONZE_SPONSORS.map(sponsor => (
             <Link href={sponsor.link} key={sponsor.name} target="_blank" rel="noopener noreferrer">
               <Image
-                src={`/sponsors/new/${sponsor.logo}`}
+                src={`/sponsors/old2/${sponsor.logo}`}
                 alt={sponsor.name}
                 className={`${styles.sponsorLogo} ${styles.bronzeSponsorLogo} ${
                   styles[sponsor.name.toLowerCase().replace(/\s/g, '')]
@@ -45,7 +58,7 @@ const Sponsors: React.FC = () => {
           {NORMAL_SPONSORS.map(sponsor => (
             <Link href={sponsor.link} key={sponsor.name} target="_blank" rel="noopener noreferrer">
               <Image
-                src={`/sponsors/new/${sponsor.logo}`}
+                src={`/sponsors/old2/${sponsor.logo}`}
                 alt={sponsor.name}
                 className={`${styles.sponsorLogo} ${
                   styles[sponsor.name.toLowerCase().replace(/\s/g, '')]
