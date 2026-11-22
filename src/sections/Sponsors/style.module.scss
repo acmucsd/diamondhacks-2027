@@ -10,6 +10,19 @@
   z-index: 4;
   padding-top: 4rem;
   padding-bottom: 4rem;
+  clip-path: inset(-100vw -100vw 0 -100vw);
+
+  @media screen and (min-width: (vars.$breakpoint-md + 1px)) {
+    display: block;
+    width: calc(100% + 2 * vars.$side-padding);
+    margin-left: calc(vars.$side-padding * -1);
+    margin-top: -47.08vw;
+    margin-bottom: calc(-64.46vw + 2.5rem);
+    padding: 0;
+    overflow: hidden;
+    clip-path: none;
+    pointer-events: none;
+  }
 
   @media screen and (max-width: vars.$breakpoint-md) {
     padding-bottom: 5rem;
@@ -20,16 +33,25 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: clamp(2rem, 2.37vw, 4.65rem);
   position: relative;
   z-index: 5;
   text-align: center;
+
+  @media screen and (min-width: (vars.$breakpoint-md + 1px)) {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(100% - 2 * vars.$side-padding);
+    pointer-events: auto;
+  }
 }
 
 .title {
   font-family: var(--font-londrina-solid);
   font-weight: 900 !important;
-  font-size: clamp(2.25rem, 5.12vw, 4.84rem) !important;
+  font-size: clamp(2.25rem, 5.73vw, 8.2rem) !important;
   line-height: 1 !important;
   letter-spacing: 0 !important;
   color: #000;
@@ -41,31 +63,31 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: clamp(2rem, 2.37vw, 4.65rem);
   width: 100%;
-  max-width: 1200px;
+  max-width: max(1200px, 88.89vw);
   margin: 0 auto;
 }
 
 .sponsorLogo {
   width: auto;
-  height: 40px;
+  height: clamp(40px, 2.96vw, 93px);
   border-radius: 10px;
-  padding: 1rem;
+  padding: clamp(1rem, 1.19vw, 2.33rem);
   @media screen and (max-width: vars.$breakpoint-lg) {
     height: 20px;
   }
 }
 
 .goldSponsorLogo {
-  height: 90px;
+  height: clamp(90px, 6.67vw, 209px);
   @media screen and (max-width: vars.$breakpoint-lg) {
     height: 45px;
   }
 }
 
 .lovable {
-  height: 25px;
+  height: clamp(25px, 1.85vw, 58px);
   @media screen and (max-width: vars.$breakpoint-lg) {
     height: 12.5px;
   }
@@ -77,14 +99,14 @@ a:has(.ucsdcse) {
 }
 
 .ucsdcse {
-  height: 140px;
+  height: clamp(140px, 10.37vw, 326px);
   @media screen and (max-width: vars.$breakpoint-lg) {
     height: 80px;
   }
 }
 
 .bronzeSponsorLogo {
-  height: 80px;
+  height: clamp(80px, 5.93vw, 186px);
   @media screen and (max-width: vars.$breakpoint-lg) {
     height: 40px;
   }
@@ -94,13 +116,20 @@ a:has(.ucsdcse) {
   text-decoration: none;
   background-color: vars.$dark-blue;
   color: vars.$white;
-  padding: 10px 24px;
+  padding: clamp(10px, 0.74vw, 23px) clamp(24px, 1.78vw, 56px);
   border-radius: 100px;
   display: inline-block;
 }
 
 .bottomText {
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  //text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  font-family: var(--font-londrina-solid);
+  color: #000;
+
+  @media screen and (min-width: (vars.$breakpoint-md + 1px)) {
+    font-size: clamp(2rem, 2.37vw, 4.65rem) !important;
+    line-height: clamp(2.625rem, 3.11vw, 6.1rem) !important;
+  }
 
   @media screen and (max-width: vars.$breakpoint-md) {
     font-size: 1.25rem !important;
@@ -109,6 +138,11 @@ a:has(.ucsdcse) {
 }
 
 .buttonText {
+  @media screen and (min-width: (vars.$breakpoint-md + 1px)) {
+    font-size: clamp(1.4375rem, 1.7vw, 3.34rem) !important;
+    line-height: clamp(1.875rem, 2.22vw, 4.37rem) !important;
+  }
+
   @media screen and (max-width: vars.$breakpoint-md) {
     font-size: 1rem !important;
     line-height: 1.25rem !important;
@@ -169,6 +203,27 @@ $paper-overhang: calc(21.4vw - 2.5rem);
   }
 }
 
+@media screen and (min-width: (vars.$breakpoint-md + 1px)) {
+  .paper,
+  .paperMiddle {
+    display: none;
+  }
+}
+
+.paperDoubleTear {
+  display: block;
+  position: relative;
+  width: 127%;
+  height: auto;
+  margin-left: -10%;
+  z-index: 2;
+  pointer-events: none;
+
+  @media screen and (max-width: vars.$breakpoint-md) {
+    display: none;
+  }
+}
+
 .winnerGuy {
   position: absolute;
   top: -10.9vw;
@@ -177,6 +232,11 @@ $paper-overhang: calc(21.4vw - 2.5rem);
   max-width: 270px;
   z-index: 3;
   pointer-events: none;
+
+  @media screen and (min-width: (vars.$breakpoint-md + 1px)) {
+    top: 19.57%;
+    right: 0;
+  }
 
   @media screen and (max-width: vars.$breakpoint-md) {
     right: calc(-1 * vars.$side-padding-mobile);
@@ -191,6 +251,11 @@ $paper-overhang: calc(21.4vw - 2.5rem);
   max-width: 176px;
   z-index: 3;
   pointer-events: none;
+
+  @media screen and (min-width: (vars.$breakpoint-md + 1px)) {
+    top: 34.93%;
+    left: 0;
+  }
 
   @media screen and (max-width: vars.$breakpoint-md) {
     left: calc(-1 * vars.$side-padding-mobile);

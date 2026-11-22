@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { BRONZE_SPONSORS, GOLD_SPONSORS, NORMAL_SPONSORS } from './sponsors';
 
 const PAPER = '/assets/graph-paper.svg';
+const PAPER_DOUBLE_TEAR = '/assets/graph-paper-double-tear.svg';
 
 const Sponsors: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const Sponsors: React.FC = () => {
         ))}
       </div>
       <img src={PAPER} alt="" className={`${styles.paper} ${styles.paperBottom}`} />
+      <img src={PAPER_DOUBLE_TEAR} alt="" className={styles.paperDoubleTear} />
       <img src="/assets/winner-guy.svg" alt="" className={styles.winnerGuy} />
       <img src="/assets/redbull-guy.svg" alt="" className={styles.redbullGuy} />
       <div className={styles.content}>
