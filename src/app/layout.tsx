@@ -6,10 +6,10 @@ import { DM_Sans, Londrina_Solid } from 'next/font/google';
 import localFont from 'next/font/local';
 import { Analytics } from '@vercel/analytics/next';
 
-const dmSans = DM_Sans({ subsets: ['latin'] });
+const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm-sans' });
 
 const londrinaSolid = Londrina_Solid({
-  weight: ['400', '900'],
+  weight: ['100', '300', '400', '900'],
   subsets: ['latin'],
   variable: '--font-londrina-solid',
   display: 'swap',
@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <meta name="theme-color" content="#151625" />
       </head>
-      <body className={`${dmSans.className} ${jainiPurva.variable} ${londrinaSolid.variable}`}>
+      <body className={`${londrinaSolid.className} ${londrinaSolid.variable} ${dmSans.variable} ${jainiPurva.variable}`}>
         {/* <Navbar /> */}
         {children}
         <Footer />

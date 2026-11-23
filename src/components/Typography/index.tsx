@@ -38,7 +38,7 @@ const v2StandardSizes: Record<V2StandardStyle, Record<V2Size, string>> = {
   },
   body: {
     large: '1.125rem',
-    medium: '1rem',
+    medium: 'clamp(1.25rem, 2.3vw, 2.1775rem)',
     small: '0.875rem',
   },
 };
@@ -56,7 +56,7 @@ const v2StandardHeights: Record<V2StandardStyle, Record<V2Size, string>> = {
   },
   body: {
     large: '1.5rem',
-    medium: '1.3125rem',
+    medium: '1.2',
     small: '1.125rem',
   },
 };
@@ -68,15 +68,15 @@ const v2StandardSpacings: Partial<Record<V2StandardStyle, Partial<Record<V2Size,
   },
   body: {
     large: '0.03125rem',
-    medium: '0.01563rem',
+    medium: '0',
     small: '0.025rem',
   },
 };
 
-const v2StandardWeights: Record<V2StandardStyle, number> = {
-  title: 400,
-  label: 500,
-  body: 400,
+const v2StandardWeights: Record<V2StandardStyle, Record<V2Size, number>> = {
+  title: { large: 400, medium: 400, small: 400 },
+  label: { large: 500, medium: 500, small: 500 },
+  body: { large: 400, medium: 300, small: 400 },
 };
 
 const v2WeightedSizes: Record<V2WeightedStyle, Record<V2Size, string>> = {
@@ -152,7 +152,7 @@ const variantToCSS = (variant: V2Variant): CSSProperties => {
       fontSize: v2StandardSizes[style][size],
       lineHeight: v2StandardHeights[style][size],
       letterSpacing: v2StandardSpacings[style]?.[size] ?? 'normal',
-      fontWeight: v2StandardWeights[style],
+      fontWeight: v2StandardWeights[style][size],
     };
   }
   const [style, weight, size] = variant.split('/') as [V2WeightedStyle, V2Weight, V2Size];
