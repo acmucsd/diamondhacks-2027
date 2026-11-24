@@ -5,6 +5,7 @@ import Chatbot from '@/sections/Chatbot';
 import Room3 from '@/sections/Room3';
 import styles from './page.module.scss';
 import MeetTeam from '@/sections/MeetTeam';
+import VendingMachine from '@/sections/VendingMachine';
 import Sponsors from '@/sections/Sponsors';
 
 export default function Home() {
@@ -17,6 +18,7 @@ export default function Home() {
         <Chatbot />
         <Room3 />
         <MeetTeam />
+        <VendingMachine />
         <Sponsors />
       </main>
     </div>

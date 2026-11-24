@@ -1,0 +1,158 @@
+@use '../../styles/vars.scss' as vars;
+
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.vendingMachine {
+  position: relative;
+  display: flex;
+  height: 70rem;
+}
+
+.header {
+  position: absolute;
+  top: 1.5rem;
+  left: 0.5rem;
+  margin: 0;
+  padding: 0;
+  color: vars.$white;
+  font-family: var(--font-inter);
+  font-size: 5.4rem;
+  font-weight: 900;
+  text-shadow:
+    0 0 0.8rem #ffb764,
+    0.05rem 0.05rem 0 #f0ac4c,
+    0.06rem 0.1rem 0.2rem rgba(0, 0, 0, 0.7),
+    0.1rem 0.1rem 0 #f0ac4c,
+    0.11rem 0.15rem 0.2rem rgba(0, 0, 0, 0.7),
+    0.15rem 0.15rem 0 #f0ac4c,
+    0.16rem 0.2rem 0.2rem rgba(0, 0, 0, 0.7),
+    0.2rem 0.2rem 0 #f0ac4c,
+    0.21rem 0.25rem 0.2rem rgba(0, 0, 0, 0.7),
+    0.25rem 0.25rem 0 #f0ac4c,
+    0.26rem 0.3rem 0.2rem rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  letter-spacing: -0.2rem;
+}
+
+.blindBoxContainer {
+  position: absolute;
+  top: 12.15rem;
+  left: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  .blindBoxHeader {
+    margin: 0;
+    color: #989db6;
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+
+  .blindBoxes {
+    display: flex;
+    gap: 0.5rem;
+  }
+}
+
+.blindBox {
+  position: relative;
+  isolation: isolate;
+  width: 7.5rem;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: vars.$white;
+  cursor: pointer;
+
+  svg {
+    display: block;
+  }
+
+  &::before {
+    position: absolute;
+    inset: 8% -18%;
+    z-index: -1;
+    background: var(--highlight-color);
+    content: '';
+    opacity: 0;
+    filter: blur(1.75rem);
+    transition: opacity 180ms ease;
+  }
+
+  &[data-box='projects'] {
+    --highlight-color: #69b4e8;
+  }
+
+  &[data-box='attendees'] {
+    --highlight-color: #99ee92;
+  }
+
+  &[data-box='prizes'] {
+    --highlight-color: #f8a6d2;
+  }
+
+  &[data-active='true'] {
+    &::before {
+      opacity: 0.9;
+    }
+  }
+}
+
+.boxName,
+.boxLabel {
+  position: absolute;
+  left: -0.4rem;
+  width: 100%;
+  color: vars.$white;
+  font-weight: 400;
+  -webkit-text-stroke: 1px vars.$black;
+  text-align: center;
+  pointer-events: none;
+}
+
+.boxName {
+  top: 0.2rem;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+}
+
+.boxLabel {
+  bottom: 0.3rem;
+  font-size: 1.8rem;
+  text-transform: lowercase;
+}
+
+.statsContainer {
+  position: absolute;
+  top: 13rem;
+  left: 30rem;
+  color: vars.$black;
+}
+
+.stat {
+  margin: 0;
+  font-size: 4rem;
+  font-weight: 400;
+
+  &[data-box='projects'] {
+    color: #1179C0;
+  }
+
+  &[data-box='attendees'] {
+    color: #6AC55C;
+  }
+
+  &[data-box='prizes'] {
+    color: #E751A6;
+  }
+}
+
+.statUnit {
+  margin: 0;
+  margin-top: 0.3rem;
+}
