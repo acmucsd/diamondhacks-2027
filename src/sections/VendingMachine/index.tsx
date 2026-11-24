@@ -78,7 +78,7 @@ const VendingMachine = () => {
           </div>
         </div>
         <div className={styles.statsContainer}>
-            <p>Over the years we've had...</p>
+            <p>Over the years we&apos;ve had...</p>
             <p className={styles.stat} data-box={boxes[infoBox].name}>{boxes[infoBox].stat}</p>
             <p className={styles.statUnit}>{boxes[infoBox].statUnit}</p>
         </div>
